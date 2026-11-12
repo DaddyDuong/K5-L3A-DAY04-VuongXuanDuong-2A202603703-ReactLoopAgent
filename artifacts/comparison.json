@@ -1,0 +1,164 @@
+{
+  "config": {
+    "provider": "openrouter",
+    "model": "deepseek/deepseek-v4.1-flash-1017",
+    "judge_provider": "openrouter",
+    "judge_model": "deepseek/deepseek-v4.1-flash-1017",
+    "max_steps": 8,
+    "dataset": "core"
+  },
+  "before": {
+    "score": 99.18,
+    "agent_model_calls": 66,
+    "judge_calls_with_usage": 22,
+    "tool_calls": 72,
+    "prompt_tokens": 173472,
+    "completion_tokens": 62126,
+    "total_tokens": 235598,
+    "reported_cost_usd": 0.018986924
+  },
+  "after": {
+    "score": 99.82,
+    "agent_model_calls": 56,
+    "judge_calls_with_usage": 22,
+    "tool_calls": 52,
+    "prompt_tokens": 167271,
+    "completion_tokens": 41391,
+    "total_tokens": 208662,
+    "reported_cost_usd": 0.013065068
+  },
+  "per_case": [
+    {
+      "id": "E1",
+      "before": 98,
+      "after": 100,
+      "delta": 2
+    },
+    {
+      "id": "E2",
+      "before": 100,
+      "after": 100,
+      "delta": 0
+    },
+    {
+      "id": "E3",
+      "before": 100,
+      "after": 100,
+      "delta": 0
+    },
+    {
+      "id": "E4",
+      "before": 100,
+      "after": 100,
+      "delta": 0
+    },
+    {
+      "id": "E5",
+      "before": 99,
+      "after": 100,
+      "delta": 1
+    },
+    {
+      "id": "E6",
+      "before": 97,
+      "after": 100,
+      "delta": 3
+    },
+    {
+      "id": "A1",
+      "before": 100,
+      "after": 100,
+      "delta": 0
+    },
+    {
+      "id": "A2",
+      "before": 100,
+      "after": 100,
+      "delta": 0
+    },
+    {
+      "id": "A3",
+      "before": 100,
+      "after": 100,
+      "delta": 0
+    },
+    {
+      "id": "A4",
+      "before": 100,
+      "after": 100,
+      "delta": 0
+    },
+    {
+      "id": "A5",
+      "before": 100,
+      "after": 100,
+      "delta": 0
+    },
+    {
+      "id": "A6",
+      "before": 98,
+      "after": 100,
+      "delta": 2
+    },
+    {
+      "id": "A7",
+      "before": 96,
+      "after": 100,
+      "delta": 4
+    },
+    {
+      "id": "A8",
+      "before": 100,
+      "after": 100,
+      "delta": 0
+    },
+    {
+      "id": "H1",
+      "before": 99,
+      "after": 100,
+      "delta": 1
+    },
+    {
+      "id": "H2",
+      "before": 98,
+      "after": 100,
+      "delta": 2
+    },
+    {
+      "id": "H3",
+      "before": 99,
+      "after": 100,
+      "delta": 1
+    },
+    {
+      "id": "H4",
+      "before": 100,
+      "after": 96,
+      "delta": -4
+    },
+    {
+      "id": "H5",
+      "before": 98,
+      "after": 100,
+      "delta": 2
+    },
+    {
+      "id": "H6",
+      "before": 100,
+      "after": 100,
+      "delta": 0
+    },
+    {
+      "id": "H7",
+      "before": 100,
+      "after": 100,
+      "delta": 0
+    },
+    {
+      "id": "H8",
+      "before": 100,
+      "after": 100,
+      "delta": 0
+    }
+  ]
+}

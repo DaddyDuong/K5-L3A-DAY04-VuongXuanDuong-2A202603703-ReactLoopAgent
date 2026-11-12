@@ -1,0 +1,30 @@
+{
+  "created_at_utc": "2026-11-12T04:44:58.980489+00:00",
+  "config": {
+    "provider": "openrouter",
+    "model": "deepseek/deepseek-v4.1-flash-1017",
+    "judge_provider": "openrouter",
+    "judge_model": "deepseek/deepseek-v4.1-flash-1017",
+    "max_steps": 8,
+    "dataset": "core"
+  },
+  "openrouter_endpoint": "particle-ai/us/flex",
+  "workers": 4,
+  "protected_file_checksums": {
+    "fixtures/cloudflare.json": "896e753ad1ff6d67d5817781a487be597335dc5c124bbf0328098738bb202ab4",
+    "fixtures/github.json": "c4b72f0ab397fa72702908dc1d73aa893af66fff158b3b1bcabf223afb792ad7",
+    "evals/cases.json": "3070f2dff24d9518b690213c280a318ff880931ef042603d7371f4280b930e34",
+    "evals/scenarios.py": "019de84221bc343299acf596cfddc033bd24fa064df0c30c03f36e75fe1c1ef2",
+    "evals/grading.py": "290d342cf40c49926bd635a8046ffb6106321821e3d68ce4286b08878f3c26bf",
+    "RUBRIC.md": "dea4f834d1406343e77f6e5a13f7b3ad95ce9c419c5d2403659c78c28c752c06",
+    "artifacts/agent_before.py": "7cd6a3269554cfff64d3eab1c34b5b804fbc6fc5ed85e02bf03be8ed77701781",
+    "artifacts/agent_after_attempts.py": "20ecfc33714f9031349b32a9a4e749fdba36288fbe20807d52a811cd3e40f93b"
+  },
+  "delivery_checksums": {
+    "agent.py": "d30dbb2821d41a9a94a113ed0754157d09125fac143ec78acd606c45e77d70a5",
+    "providers.py": "6f5b2a07f8d4a2d160b3292e31545f3d82303eaf1c63fc3800a75d51c8cb4c62",
+    "eval_before.json": "7c16e0661df807465c9613aba1370ee0e862969d81be172e7a8e85f757ca0866",
+    "eval_after.json": "3b8caa5b8fb86553a567fc0521b20be1619941c1f968f720f487767a529648dd",
+    "NOTES.md": "057460dc960d07a69dda9d6c26a9908e150650fedc51cbe473dce3ab745ab8e5"
+  }
+}

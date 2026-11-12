@@ -1,6 +1,8 @@
 """Bốn provider cùng một interface. Không chứa agent loop."""
 import json
 import os
+import sys
+import time
 import urllib.error
 import urllib.request
 
@@ -14,14 +16,23 @@ CONFIG = {
 
 def post_json(url, headers, payload):
     req = urllib.request.Request(url, data=json.dumps(payload).encode(), headers={'Content-Type': 'application/json', **headers})
-    try:
-        with urllib.request.urlopen(req, timeout=60) as response:
-            return json.load(response)
-    except urllib.error.HTTPError as exc:
-        # Do not print response bodies: they may contain account or request data.
-        raise RuntimeError(f'Provider trả HTTP {exc.code}; kiểm tra model, key và quota.') from exc
-    except urllib.error.URLError as exc:
-        raise RuntimeError(f'Không kết nối được provider: {exc.reason}') from exc
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=60) as response:
+                return json.load(response)
+        except json.JSONDecodeError:
+            # Một số endpoint trả body rỗng/sai JSON tạm thời. Không in raw body,
+            # không đổi provider, chỉ thử lại tối đa 2 lần cho cùng request.
+            if attempt == 2:
+                raise
+            print(f'Provider trả JSON không hợp lệ; thử lại ({attempt + 1}/2).',
+                  file=sys.stderr, flush=True)
+            time.sleep(attempt + 1)
+        except urllib.error.HTTPError as exc:
+            # Do not print response bodies: they may contain account or request data.
+            raise RuntimeError(f'Provider trả HTTP {exc.code}; kiểm tra model, key và quota.') from exc
+        except urllib.error.URLError as exc:
+            raise RuntimeError(f'Không kết nối được provider: {exc.reason}') from exc
 
 
 class Provider:
@@ -45,6 +56,13 @@ class Provider:
         if self.name == 'anthropic':
             return self._anthropic(messages, schemas)
         payload = {'model': self.model, 'messages': messages}
+        endpoint = os.getenv('OPENROUTER_PROVIDER')
+        if self.name == 'openrouter' and endpoint:
+            payload['provider'] = {
+                'only': [endpoint],
+                'allow_fallbacks': False,
+                'require_parameters': True,
+            }
         if schemas:
             payload['tools'] = schemas
         data = post_json(self.url, {'Authorization': f'Bearer {self.key}'}, payload)
